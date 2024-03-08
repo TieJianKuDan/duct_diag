@@ -1,0 +1,18 @@
+seed: 2333
+data:
+  edh: "data/train/edh"
+  era5: "data/train/era5"
+  batch_size: 33554432 # 8192 * 64 * 64
+model: 
+  params:
+    objective: "reg:squarederror"
+    tree_method: "hist"
+    device: "cuda"
+    max_depth: 6
+    learning_rate: 0.1
+    booster: "gbtree"
+  ckp: "ckps/xgb/xgb-2003-2022.ubj"
+optim:
+  n_estimators: 7000
+  early_stopping: 100
+  verbose_eval: 10

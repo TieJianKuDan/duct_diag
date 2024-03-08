@@ -1,0 +1,9 @@
+*
+!.gitignore
+!core
+!core/**
+!scripts
+!scripts/**
+!test
+!test/**
+__pycache__

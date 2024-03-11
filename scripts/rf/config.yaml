@@ -1,7 +1,7 @@
 seed: 2333
 data:
-  edh: "data/train/edh/2018"
-  era5: "data/train/era5/2018"
+  edh: "data/train/edh/"
+  era5: "data/train/era5/"
 model: 
   params:    
     criterion: 'squared_error'

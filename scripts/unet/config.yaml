@@ -1,8 +1,8 @@
 seed:
   2333
 data:
-  edh_dir: "data/train/edh/2012"
-  era5_dir: "data/train/era5/2012"
+  edh_dir: "data/train/edh/"
+  era5_dir: "data/train/era5/"
   val_ratio: 0.2
   num_workers: 1
   persistent_workers: True

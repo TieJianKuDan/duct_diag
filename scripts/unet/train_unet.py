@@ -11,12 +11,12 @@ def main():
     cc = ClassicConf(
         dm_class=ERA5PLDM,
         model_class=UnetPL,
-        config_dir="scripts/reg/config.yaml",
-        log_dir="./logs/era5",
-        log_name="regress",
-        ckp_dir="ckps/era5/regress"
+        config_dir="scripts/unet/config.yaml",
+        log_dir="./logs/",
+        log_name="unet",
+        ckp_dir="ckps/unet/"
     )
-    cc.test("ckps/era5/regress/epoch=82-step=259644.ckpt")
+    cc.train()
 
 if __name__ == "__main__":
     main()

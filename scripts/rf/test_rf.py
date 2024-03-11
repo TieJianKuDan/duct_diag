@@ -1,6 +1,7 @@
 import sys
 
 sys.path.append("./")
+import pickle
 from time import time
 
 import numpy as np
@@ -34,15 +35,11 @@ def main():
     labels = np.expand_dims(ds_train.edh, axis=0)
     labels = rearrange(labels, "c b h w -> (b h w) c")
     # model
-    params = {
-        "device": "cuda"
-    }
-    model = xgb.Booster(params=params)
-    model.load_model("ckps/xgb/xgb-2003-2022.ubj")
+    with open("ckps/rf/rf-2003-2022.pkl", "rb") as f:
+        model = pickle.load(f)
     # predict
-    ddata = xgb.DMatrix(data)
     ts = time()
-    pred = model.predict(ddata)
+    pred = model.predict(data)
     te = time()
     print(f"MSE: {metrics.mean_squared_error(pred, labels)}")
     print(f"RMSE: {metrics.mean_squared_error(pred, labels, squared=False)}")

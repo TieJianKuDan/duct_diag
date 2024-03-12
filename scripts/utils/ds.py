@@ -18,7 +18,7 @@ class TD(Dataset):
     def normlize(self, data:np.ndarray, name:str):
         # handle nan
         data_ = data[~np.isnan(data)]
-        if self.flag == "train":
+        if self.flag == "fit":
             self.dist[name] = {
                 "mean": float(data_.mean()),
                 "std": float(data_.std())
@@ -141,7 +141,7 @@ class ERA5Dataset(TD):
         gc.collect()
         self.q2m = self._handle_q2m(_era5)
         gc.collect()
-        if flag == "train":
+        if flag == "fit":
             with open('.cache/dist.json', 'w') as f:  
                 json.dump(self.dist, f)
 

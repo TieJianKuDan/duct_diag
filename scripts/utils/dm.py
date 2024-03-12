@@ -111,7 +111,7 @@ class ERA5PLDM(PLDM):
             ):
             print("prepare train_set and val_set")
             datasets = ERA5Dataset(
-                self.edh_dir, self.era5_dir
+                self.edh_dir, self.era5_dir, flag=stage
             )
             self.train_set, self.val_set = random_split(
                 datasets, 
@@ -125,7 +125,7 @@ class ERA5PLDM(PLDM):
             and self.test_set == None:
             print("prepare test_set")
             datasets = ERA5Dataset(
-                self.edh_dir, self.era5_dir
+                self.edh_dir, self.era5_dir, flag=stage
             )
             self.test_set = datasets
         else:

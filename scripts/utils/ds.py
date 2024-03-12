@@ -94,17 +94,17 @@ class TD(Dataset):
 
 class ERA5Dataset(TD):
 
-    def __init__(self, edh, era5, flag="train") -> None:
+    def __init__(self, edh, era5, flag="fit") -> None:
         super(ERA5Dataset, self).__init__()
         self.flag = flag
-        if flag == "train":
+        if flag == "fit":
             self.dist = {}
         else:
             # load mean and std
             with open('.cache/dist.json', 'r') as f:  
                 self.dist = json.load(f) 
+        
         # load edh(time, lat, lon)
-                
         _edh = []
         for root, _, files in os.walk(edh):  
             for filename in files:

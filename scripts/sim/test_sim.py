@@ -1,4 +1,5 @@
 import sys
+from time import time
 
 
 sys.path.append("./")
@@ -22,23 +23,24 @@ def main():
     )
 
     # data
-    test_set = ERA5Dataset(R"data/test/edh", R"data/test/era5")
-    test_loader = DataLoader(test_set, 256, True)
+    test_set = ERA5Dataset(R"data/test/edh", R"data/test/era5", "test")
+    test_loader = DataLoader(test_set, 128, True)
 
     # model
     net = SimUNetPL.load_from_checkpoint(
-        R"ckps/era5/regress/v4.ckpt"
+        R"ckps/sim/sim-1993-2022.ckpt"
     ).eval()
 
     truth = []
     pred = []
+    ts = time()
     for _, (era5, edh) in enumerate(test_loader):
         era5 = era5.to(net.device)
         edh = edh.to(net.device)
         edh_hat = net(era5)
         truth.append(edh.cpu().detach())
         pred.append(edh_hat.cpu().detach())
-
+    print(f"take {time() - ts}s")
     pred = torch.cat(pred, 0)
     truth = torch.cat(truth, 0)
     rmse = metrics.RMSE(pred, truth).item()

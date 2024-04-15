@@ -9,7 +9,7 @@ data:
 model:
   in_channels: 6
   out_channels: 1
-  bilinear: True
+  bilinear: False
   block_out_channels: [64, 128, 256, 512, 1024]
 optim:
   accelerator: "gpu"
@@ -20,7 +20,7 @@ optim:
   lr: 1e-3
   betas: [0.5, 0.9]
   gradient_clip_val: 1.0
-  max_epochs: 500
+  max_epochs: 100
   accumulate: 1
   # scheduler
   warmup_percentage: 0.1

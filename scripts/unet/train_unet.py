@@ -16,7 +16,7 @@ def main():
         log_name="unet",
         ckp_dir="ckps/unet/"
     )
-    cc.train()
+    cc.train("ckps/unet/unet-1993-2022.ckpt")
 
 if __name__ == "__main__":
     main()

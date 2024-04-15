@@ -25,7 +25,7 @@ optim:
   # scheduler
   warmup_percentage: 0.1
   lr_scheduler_mode: "cosine"
-  min_lr_ratio: 1.0e-3
+  min_lr_ratio: 1e-3
   warmup_min_lr_ratio: 0.1
   # early stopping
   monitor: "val_loss"

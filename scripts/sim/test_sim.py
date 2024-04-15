@@ -7,16 +7,16 @@ import torch
 from omegaconf import OmegaConf
 from torch.utils.data import DataLoader
 
-from core.reg.unet_pl import UnetPL
+from core.unet.unet_pl import SimUNetPL
 from scripts.utils.dm import ERA5Dataset
 from scripts.utils import metrics
 
 
 def main():
     '''
-    evaluate the perfomance of UNet in regression
+    evaluate the perfomance of SimUNet in regression
     '''
-    config = OmegaConf.load(open("scripts/unet/config.yaml", "r"))
+    config = OmegaConf.load(open("scripts/sim/config.yaml", "r"))
     torch.set_float32_matmul_precision(
         config.optim.float32_matmul_precision
     )
@@ -26,8 +26,8 @@ def main():
     test_loader = DataLoader(test_set, 256, True)
 
     # model
-    net = UnetPL.load_from_checkpoint(
-        R"ckps/unet/unet-1993-2022.ckpt"
+    net = SimUNetPL.load_from_checkpoint(
+        R"ckps/era5/regress/v4.ckpt"
     ).eval()
 
     truth = []

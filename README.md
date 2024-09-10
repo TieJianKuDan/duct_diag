@@ -6,7 +6,7 @@ table
 </style> -->
 
 ### UNet style model for Evaparation Duct Height Diagnosis
-This for a model for evaparation duct height regression and is named EDH-SimUNet. Use this model, you can diagnose large-scale evaparation duct height fast and precisely. The performance is shown in the following figure.
+This model is designed for evaparation duct height regression and is named EDH-SimUNet. Use this model, you can diagnose large-scale evaparation duct height fast and precisely. The performance is shown in the following figure.
 
 ![](imgs/comparison.png)
 
